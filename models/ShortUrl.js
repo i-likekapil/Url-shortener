@@ -9,7 +9,7 @@ const shortUrlSchema= new mongoose.Schema({
     short:{
         type:String,
         required:true,
-        default:"https://url-js.herokuapp.com/"+shortID.generate()
+        default:shortID.generate
 
     },
     clicks:{
