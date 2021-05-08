@@ -35,29 +35,34 @@
         </div>
       </form>
       <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped" id="table">
           <thead>
             <tr>
               <th scope="col">Sr. No</th>
               <th>Full URL</th>
               <th>Short URL</th>
+              <th></th>
               <th>Clicks</th>
             </tr>
           </thead>
           <tbody>
             <% for( x in Urls) { %>
             <tr>
-              <th scope="col"><%= x %></th>
+              <th scope="col"><%= parseInt(x)+1 %></th>
               <td>
                 <a href="<%= Urls[x].full %>" target="_blank"
                   ><%= Urls[x].full %></a
                 >
               </td>
               <td>
-                <a href="<%= Urls[x].short %>" target="_blank"
+                <a id="shortUrlCopy" href="<%= Urls[x].short %>" target="_blank"
                   ><%= Urls[x].short %></a
                 >
               </td>
+              <td>
+                <button class="btn " id="copy" onclick="copy()">Copy</button>
+              </td>
+              
               <td><%= Urls[x].clicks %></td>
             </tr>
             <% } %>
@@ -66,4 +71,13 @@
       </div>
     </div>
   </body>
+  <script>
+    function copy(){
+    let inp = document. getElementById("shortUrlCopy"). getAttribute("href");
+    document.execCommand('copy', false);
+    inp='https://url-js.herokuapp.com/'+inp;
+    console.log(inp)
+    alert('copied');
+}
+  </script>
 </html>
